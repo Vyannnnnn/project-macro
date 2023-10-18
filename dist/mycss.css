@@ -1,0 +1,48 @@
+#menu-dropdown {
+  display: none;
+  /* position: absolute;
+  top: 100%;
+  left: 0;
+  opacity: 0;
+  transform: translateY(-10px); 
+  transition: opacity 0.2s, transform 0.2s; */
+}
+
+/* CSS untuk menampilkan menu saat tombol diklik */
+/* #menu-button[aria-expanded="true"] + #menu-dropdown {
+  display: block;
+  opacity: 1;
+  transform: translateY(0); 
+} */
+
+#section1 {
+  background-image: url("./img/1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#section2 {
+  background-image: url("./img/2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#login {
+  height: 100vh;
+}
+
+.gambar {
+background-image: url("./img/login.png");
+background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+

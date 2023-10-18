@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dist/output.css">
+    <title>Explore</title>
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <div x-data="{ cartOpen: false , isOpen: false }" class="bg-white">
+      <header>
+        <div class="container mx-auto px-6 py-3">
+          <div class="flex items-center justify-between">
+            <div class="w-full text-gray-700 md:text-left text-2xl font-bold">Jejaki</div>
+            <div class="flex items-center justify-end w-full">
+              <button @click="cartOpen = !cartOpen" class="text-gray-600 focus:outline-none mx-4 sm:mx-0">
+                <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                  <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+              </button>
+              <div class="flex sm:hidden">
+                <button @click="isOpen = !isOpen" type="button" class="text-gray-600 hover:text-gray-500 focus:outline-none focus:text-gray-500" aria-label="toggle menu">
+                  <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+                    <path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <button type="button" class="relative flex rounded-full" id="profile-menu">
+              <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M22 23C18.134 23 15 26.134 15 30V32C15 32.5523 14.5523 33 14 33C13.4477 33 13 32.5523 13 32V30C13 25.0294 17.0294 21 22 21C26.9706 21 31 25.0294 31 30V32C31 32.5523 30.5523 33 30 33C29.4477 33 29 32.5523 29 32V30C29 26.134 25.866 23 22 23Z"
+                  fill="black"
+                />
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M22 21C24.2091 21 26 19.2091 26 17C26 14.7909 24.2091 13 22 13C19.7909 13 18 14.7909 18 17C18 19.2091 19.7909 21 22 21ZM22 23C25.3137 23 28 20.3137 28 17C28 13.6863 25.3137 11 22 11C18.6863 11 16 13.6863 16 17C16 20.3137 18.6863 23 22 23Z"
+                  fill="black"
+                />
+              </svg>
+            </button>
+          </div>
+          <nav :class="isOpen ? '' : 'hidden'" class="sm:flex sm:justify-center sm:items-center mt-4">
+            <div class="flex flex-col sm:flex-row">
+              <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="index.html">Home</a>
+              <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="explore.html">Explore</a>
+              <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="about.html">About Us</a>
+            </div>
+          </nav>
+
+          <div class="relative ml-3"></div>
+        </div>
+      </header>
+
+      <div :class="cartOpen ? 'translate-x-0 ease-out' : 'translate-x-full ease-in'" class="fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 border-gray-300">
+        <div class="flex items-center justify-between">
+          <h3 class="text-2xl font-medium text-gray-700">Keranjang</h3>
+          <button @click="cartOpen = !cartOpen" class="text-gray-600 focus:outline-none">
+            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+        <hr class="my-3" />
+        <div class="flex justify-between mt-6">
+          <div class="flex">
+            <img class="h-20 w-20 object-cover rounded" src="https://upload.wikimedia.org/wikipedia/commons/0/07/Indonesia_-_Java_-_Yogyakarta_-_Taman_Sari.jpg" alt="" />
+            <div class="mx-3">
+              <h3 class="text-sm text-gray-600">Taman Sari</h3>
+              <div class="flex items-center mt-2">
+                <button class="text-gray-500 focus:outline-none focus:text-gray-600">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </button>
+                <span class="text-gray-700 mx-2">1</span>
+                <button class="text-gray-500 focus:outline-none focus:text-gray-600">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <span class="text-gray-600">50K</span>
+        </div>
+        <div class="flex justify-between mt-6">
+          <div class="flex">
+            <img class="h-20 w-20 object-cover rounded" src="https://jogja.disway.id/upload/12eceb1f93a3bad2d643b34aeec50a58.jpg" alt="" />
+            <div class="mx-3">
+              <h3 class="text-sm text-gray-600">Pantai Parangtritis</h3>
+              <div class="flex items-center mt-2">
+                <button class="text-gray-500 focus:outline-none focus:text-gray-600">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </button>
+                <span class="text-gray-700 mx-2">3</span>
+                <button class="text-gray-500 focus:outline-none focus:text-gray-600">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <span class="text-gray-600">300K</span>
+        </div>
+        <div class="flex justify-between mt-6">
+          <div class="flex">
+            <img class="h-20 w-20 object-cover rounded" src="https://jogja.disway.id/upload/b86f5d55b89ac9a36898753a3bf39e96.jpg" alt="" />
+            <div class="mx-3">
+              <h3 class="text-sm text-gray-600">Gunung Bromo</h3>
+              <div class="flex items-center mt-2">
+                <button class="text-gray-500 focus:outline-none focus:text-gray-600">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </button>
+                <span class="text-gray-700 mx-2">2</span>
+                <button class="text-gray-500 focus:outline-none focus:text-gray-600">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <span class="text-gray-600">20K</span>
+        </div>
+        <div class="mt-8">
+          <form class="flex items-center justify-center">
+            <input class="form-input w-48" type="text" placeholder="Masukkan Code Promo" />
+            <a href="review.html" class="ml-3 flex items-center px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+              <span>Kembali</span>
+            </a>
+          </form>
+        </div>
+        <a href="konfirmasi-bayar.html" class="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+          <button>Checkout</button>
+          <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+      <div class="my-8">
+        <div class="container mx-auto px-6">
+          <div class="h-64 rounded-md overflow-hidden bg-cover bg-center" style="background-image: url('https://blog.tripcetera.com/id/wp-content/uploads/2020/10/pulau-padar.jpg')">
+            <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
+              <div class="px-10 max-w-xl">
+                <h2 class="text-2xl text-white font-semibold">Nikmati Indahnya Alam Indonesia</h2>
+                <p class="mt-2 text-gray-400">Travelling adalah cara kita mengenal Tuhan, Alam sekitar, Orang lain dan Diri sendiri.</p>
+              </div>
+            </div>
+          </div>
+          <div class="md:flex mt-8 md:-mx-4">
+            <div
+              class="w-full h-64 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:w-1/2"
+              style="
+                background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgmB9AMVRKHn57pPjJi6BlVCxuckqpecHw3zIefBHq4AJXIh8SKaWsRdCW7bPLd40Dt3BF-5HDp-mfLa6jbEnGxPcsjWi3mxE18f2vHpGVXdDDN8fOllX-ZN1HzMJZTD_zBmK00XVAoJkkllTCOFDL38EvYhvr7ZUo56YwwrRbY23l4_a7cidQtvE-53A/s1500/Pake%20Tour%20Lombok%201%20Hari.jpeg');
+              "
+            >
+              <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
+                <div class="px-10 max-w-xl">
+                  <h2 class="text-2xl text-white font-semibold">Rekomendasi</h2>
+                  <p class="mt-2 text-gray-400">Tempat-tempat yang sering dikunjungin.</p>
+                  <a href="#">
+                    <button class="flex items-left mt-4 px-3 py-2 font-serif bg-red-950 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                      <span>CARI</span>
+                      <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                      </svg>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="w-full h-64 mt-8 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:mt-0 md:w-1/2" style="background-image: url('https://jadesta.kemenparekraf.go.id/imgpost/93032.jpg')">
+              <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
+                <div class="px-10 max-w-xl">
+                  <h2 class="text-4xl text-white font-serif">Pantai</h2>
+                  <p class="mt-2 text-gray-400">Tempat wisata yang sangat cocok dikunjungin bersama keluarga.</p>
+                  <a href="pantai.html">
+                    <button class="flex items-center mt-4 px-3 py-2 bg-orange-500 text-white text-sm uppercase font-sans rounded hover:bg-gray-500 focus:outline-none focus:bg-blue-500">
+                      <span>Cari</span>
+                      <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                      </svg>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full h-60 mt-10 md:mx 1 rounded-md overflow-hidden bg-cover bg-center md:mt-10 md:w-1/2" style="background-image: url('https://jogja.disway.id/upload/b86f5d55b89ac9a36898753a3bf39e96.jpg')">
+            <div class="bg-gray-900 bg-opacity-50 flex items-center h-full">
+              <div class="px-10 max-w-xl">
+                <h2 class="text-4xl text-white from-neutral-400">Pegunungan</h2>
+                <p class="mt-2 text-gray-400">Tempat wisata yang sangat cocok dikunjungin bersama teman-teman.</p>
+                <a href="pegunungan.html">
+                  <button class="flex items-center mt-4 px-3 py-2 bg-yellow-700 text-white text-sm uppercase font-sans rounded hover:bg-amber-950 focus:outline-none focus:bg-blue-500">
+                    <span>Cari</span>
+                    <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                      <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+        <div class="mt-12">
+            <div class="container">
+          <h2 class="text-black text-4xl font-bold">Rekomendasi</h2>
+          <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+              <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('https://assets.ayobandung.com/crop/0x0:0x0/750x500/webp/photo/2023/02/07/1171744514.jpg')">
+                <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="px-5 py-3">
+                <h3 class="text-gray-700 uppercase">Pantai Gunung Kidul</h3>
+                <span class="text-gray-500 mt-2">10K</span>
+              </div>
+            </div>
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+              <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('https://jogja.disway.id/upload/12eceb1f93a3bad2d643b34aeec50a58.jpg')">
+                <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="px-5 py-3">
+                <a href="review.html" class="text-gray-700 uppercase">Pantai Parangtritis</a>
+                <h3 class="text-gray-500 mt-1">300K</h3>
+              </div>
+            </div>
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+              <div
+                class="flex items-end justify-end h-56 w-full bg-cover"
+                style="
+                  background-image: url('https://cdn1-production-images-kly.akamaized.net/tBa-IXZO6y4K4KOj2-4GPK6Vo6Q=/800x450/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/4556165/original/055409600_1693311908-000_HKG2004041760543.jpg');
+                "
+              >
+                <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="px-5 py-3">
+                <h3 class="text-gray-700 uppercase">Gunung Bromo</h3>
+                <span class="text-gray-500 mt-2">20K</span>
+              </div>
+            </div>
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+              <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/0/07/Indonesia_-_Java_-_Yogyakarta_-_Taman_Sari.jpg')">
+                <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="px-5 py-3">
+                <h3 class="text-gray-700 uppercase">Taman Sari</h3>
+                <span class="text-gray-500 mt-2">50K</span>
+              </div>
+            </div>
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+              <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('https://t-2.tstatic.net/tribunnewswiki/foto/bank/images/Telaga-Cebong-Wonosobo.jpg')">
+                <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="px-5 py-3">
+                <h3 class="text-gray-700 uppercase">Telaga Cebong</h3>
+                <span class="text-gray-500 mt-2">15K</span>
+              </div>
+            </div>
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+              <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('https://wahananews.co/photo/berita/dir082023/1693291236_8fffeb5d27bc65577087.jpg')">
+                <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="px-5 py-3">
+                <h3 class="text-gray-700 uppercase">Bukit Siattar</h3>
+                <span class="text-gray-500 mt-2">20K</span>
+              </div>
+            </div>
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+              <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('https://www.sfidnfits.com/image/catalog/Candi%20Borobudur/sfidnfits-mengenal-objek-wisata-candi-borobudur1.jpeg')">
+                <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="px-5 py-3">
+                <h3 class="text-gray-700 uppercase">Candi Borobudur</h3>
+                <span class="text-gray-500 mt-2">25K</span>
+              </div>
+            </div>
+            <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+              <div class="flex items-end justify-end h-56 w-full bg-cover" style="background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/6b/04/0e/photo0jpg.jpg?w=1200&h=-1&s=1')">
+                <button class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                  <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="px-5 py-3">
+                <h3 class="text-gray-700 uppercase">Museum Tsunami Aceh</h3>
+                <span class="text-gray-500 mt-2">10K</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+      </main>
+
+      <footer class="bg-primary pb-7 pt-16 pb-expanded" id="footer">
+        <div class="container">
+          <div class="w-full">
+            <h1 class="text-left font-bold lg:text-3xl mb-7">Jejaki</h1>
+            <div class="my-card flex flex-row items-start justify-center">
+              <div class="card-1 w-full h-full lg:mr-10">
+                <p class="font-Primary text-base mb-2">Contact us</p>
+                <p class=" text-slate-700 text-sm mb-2">jejaki@gmail.com</p>
+                <p class=" text-slate-700 text-sm mb-2">+1-2345-6789</p>
+                <p class=" text-slate-700 text-sm mb-1">123 Jalan.Siliwangi No.12,<span class="block">Indonesia</span></p>
+  
+                <div class="flex flex-row justify-start mb-24">
+                  <a href="https://twitter.com" class="p-0 m-0 inline-flex"><img src="./dist/icon/twitter.svg" alt="twitter" width="20px" height="25px" class="mr-3" /></a>
+                  <a href="https://instagram.com" class="p-0 m-0 inline-flex"><img src="./dist/icon/instagram.svg" alt="instagram" width="27px" height="27px" class="mr-3" /></a>
+                  <a href="https://linkedin.com" class="p-0 m-0 inline-flex"><img src="./dist/icon/linkedin.svg" alt="linkeidn" width="29px" height="31px" class="mr-3" /></a>
+                  <a href="https://facebook.com" class="p-0 m-0 inline-flex"><img src="./dist/icon/facebook.svg" alt="instagram" width="29px" height="29px" class="m-0" /></a>
+                </div>
+  
+                <div class="relative inline-block text-left">
+                  <button type="button" class="inline-flex w-full justify-center gap-x-1.5 py-2 text-sm" id="menu-button" aria-expanded="false" aria-haspopup="true">
+                    <img src="./dist/icon/world.svg" alt="Indonesia" width="18px" height="18px" class="mr-3 cursor-default" />
+                    <p class=" text-slate-700 text-sm cursor-default">Indonesia</p>
+                    <svg class="-mr-1 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+  
+                  <div
+                    class="absolute z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="menu-button"
+                    tabindex="-1"
+                    id="menu-dropdown"
+                  >
+                    <div class="py-1" role="none">
+                      <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
+                      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
+                      <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
+                      <form method="POST" action="#" role="none">
+                        <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="card-2 w-full h-full lg:mr-10">
+                <p class="font-Primary text-base mb-2">Products</p>
+                <a href="explore.html"><p class=" text-sm text-slate-700">Tiket</p></a>
+              </div>
+  
+              <div class="card-3 w-full h-full lg:mr-10">
+                <p class="font-Primary text-base mb-2">About</p>
+                <a href="about.html"><p class=" text-sm text-slate-700">Tentang Kami</p></a>
+              </div>
+  
+              <div class="card-4 w-full h-full self-end text-end">
+                <p class="font-thin text-sm mb-2">Copyright © 2023. All rights reserved.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="./dist/js/script.js"></script>
+  </body>
+</html>
